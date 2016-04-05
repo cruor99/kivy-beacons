@@ -22,7 +22,7 @@ class BeaconRoot(BoxLayout):
 
     def __init__(self, **kwargs):
         super(BeaconRoot, self).__init__(**kwargs)
-        KontaktSDK.initialize("OuWdVRCdiGSezhkPkppkzazuKrZFPwDQ")
+        KontaktSDK.initialize("apikeyhere")
         self.proximityManagerContract = autoclass('com.kontakt.sdk.android.manager.KontaktProximityManager')
         Clock.schedule_once(self.onStart)
 
