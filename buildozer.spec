@@ -66,10 +66,11 @@ orientation = portrait
 #
 
 # (bool) Indicate if the application should be fullscreen or not
-fullscreen = 1
+fullscreen = 0
 
 # (list) Permissions
 #android.permissions = INTERNET
+android.permissions = INTERNET, BLUETOOTH, BLUETOOTH_ADMIN, ACCESS_NETWORK_STATE, ACCESS_FINE_LOCATION
 
 # (int) Android API to use
 #android.api = 19
