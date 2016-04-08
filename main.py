@@ -33,9 +33,9 @@ class BeaconRoot(BoxLayout):
 
         intent = Intent()
         intent.setAction(Intent.ACTION_VIEW)
-        intent.setData(Uri.arse('http://kivy.org'))
+        intent.setData(Uri.parse('http://kivy.org'))
 
-        currentActivity = cast('android.app.Activity', PythonActivity.mAtivity)
+        currentActivity = cast('android.app.Activity', PythonActivity.mActivity)
         currentActivity.startActivity(intent)
 
 
@@ -46,3 +46,7 @@ class BeaconApp(App):
 
     def build(self):
         return BeaconRoot()
+
+
+if __name__ == "__main__":
+    BeaconApp().run()

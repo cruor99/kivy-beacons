@@ -116,7 +116,7 @@ android.permissions = INTERNET, BLUETOOTH, BLUETOOTH_ADMIN, ACCESS_NETWORK_STATE
 # down the build process. Allows wildcards matching, for example:
 # OUYA-ODK/libs/*.jar
 #android.add_jars = foo.jar,bar.jar,path/to/more/*.jar
-android.addjars = libs/android/kontaktio-android-sdk.jar
+#android.addjars = libs/android/kontaktio-android-sdk.jar
 
 # (list) List of Java files to add to the android project (can be java or a
 # directory containing the files)
