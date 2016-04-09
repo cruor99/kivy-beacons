@@ -71,7 +71,7 @@ fullscreen = 0
 
 # (list) Permissions
 #android.permissions = INTERNET
-android.permissions = INTERNET, BLUETOOTH, BLUETOOTH_ADMIN, ACCESS_NETWORK_STATE, ACCESS_FINE_LOCATION
+android.permissions = INTERNET, BLUETOOTH, BLUETOOTH_ADMIN, ACCESS_NETWORK_STATE, ACCESS_FINE_LOCATION, VIBRATE
 
 # (int) Android API to use
 #android.api = 19
@@ -116,7 +116,7 @@ android.permissions = INTERNET, BLUETOOTH, BLUETOOTH_ADMIN, ACCESS_NETWORK_STATE
 # down the build process. Allows wildcards matching, for example:
 # OUYA-ODK/libs/*.jar
 #android.add_jars = foo.jar,bar.jar,path/to/more/*.jar
-#android.addjars = libs/android/kontaktio-android-sdk.jar
+android.add_jars = libs/android/*
 
 # (list) List of Java files to add to the android project (can be java or a
 # directory containing the files)
