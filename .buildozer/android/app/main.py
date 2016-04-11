@@ -11,25 +11,25 @@ from android.runnable import run_on_ui_thread
 #preload java classes
 System = autoclass('java.lang.System')
 PythonActivity = autoclass('org.renpy.android.PythonActivity')
-#KontaktSDK = autoclass('com.kontakt.sdk.common.KontaktSDK')
-#ProximityManager = autoclass('com.kontakt.sdk.android.ble.manager.ProximityManager')
 BeaconManager = autoclass("org.altbeacon.beacon.BeaconManager")
 MonitorNotifier = autoclass("org.altbeacon.beacon.MonitorNotifier")
 BeaconParser = autoclass("org.altbeacon.beacon.BeaconParser")
 Region = autoclass("org.altbeacon.beacon.Region")
+context = PythonActivity.mActivity
 
 
 class BeaconActivity(PythonJavaClass):
-    __javainterfaces__ = ['org/altbeacon/beacon/BeaconConsumer']
+    __javainterfaces__ = ['org.altbeacon.beacon.BeaconConsumer']
     __javacontext__ = "app"
 
     def __init__(self):
-        self.beaconManager = BeaconManager.getInstanceForApplication(self)
+        super(BeaconActivity, self).__init__()
+        self.beaconManager = BeaconManager.getInstanceForApplication(context)
         self.beaconManager.getBeaconParsers().add(BeaconParser().setBeaconLayout("m:0-3=4c000215,i:4-19,i:20-21,i:22-23,p:24-24"))
-        self.beaconManager.bind(self)
+        self.beaconManager.bind(context)
         self.onBeaconServiceConnect()
         try:
-            self.beaconManager.startMonitoringBeaconsInRegion(Region("uniqueIdHere"))
+            self.beaconManager.startMonitoringBeaconsInRegion(Region("f7826da6-4fa2-4e98-8024-bc5b71e0893e"))
         except:
             print "Something failed"
 
@@ -41,7 +41,7 @@ class BeaconActivity(PythonJavaClass):
 
 
 class PyMonitorNotifier(PythonJavaClass):
-    __javainterfaces__ = ["org/altbeacon/beacon/MonitorNotifier"]
+    __javainterfaces__ = ["org.altbeacon.beacon$MonitorNotifier"]
     __javacontext__ = "app"
 
     @java_method("(Lorg/altbeacon/beacon/Region)V;")

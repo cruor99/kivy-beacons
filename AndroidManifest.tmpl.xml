@@ -78,10 +78,10 @@
     {% if service or args.launcher %}
     <service android:name="org.renpy.android.PythonService"
              android:process=":PythonService"/>
-    <service android:name="com.kontakt.sdk.android.ble.service.ProximityService"
-             android:exported="false"/>
     {% endif %}
 
+    <service android:name="org.altbeacon.beacon.service.BeaconService"
+             android:exported="false"/>
 	{% if args.billing_pubkey %}
 	<service android:name="org.renpy.android.billing.BillingService"
 		android:process=":python" />
