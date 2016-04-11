@@ -17,7 +17,6 @@ BeaconParser = autoclass("org.altbeacon.beacon.BeaconParser")
 Region = autoclass("org.altbeacon.beacon.Region")
 context = PythonActivity.mActivity
 
-
 class BeaconActivity(PythonJavaClass):
     __javainterfaces__ = ['org.altbeacon.beacon.BeaconConsumer']
     __javacontext__ = "app"
@@ -26,13 +25,16 @@ class BeaconActivity(PythonJavaClass):
         super(BeaconActivity, self).__init__()
         self.beaconManager = BeaconManager.getInstanceForApplication(context)
         self.beaconManager.getBeaconParsers().add(BeaconParser().setBeaconLayout("m:0-3=4c000215,i:4-19,i:20-21,i:22-23,p:24-24"))
-        self.beaconManager.bind(context)
-        self.onBeaconServiceConnect()
+        self.beaconManager.bind(self)
         try:
             self.beaconManager.startMonitoringBeaconsInRegion(Region("f7826da6-4fa2-4e98-8024-bc5b71e0893e"))
         except:
             print "Something failed"
 
+
+    @java_method("()Landroid/content/Context;")
+    def getApplicationContext(self):
+        return context
 
     @java_method("()V;")
     def onBeaconServiceConnect(self):
